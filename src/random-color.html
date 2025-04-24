@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Box</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .color-box {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border: 2px solid #333;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        .color-value {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .refresh-btn {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .refresh-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Color Box</h1>
+        <div id="colorBox" class="color-box"></div>
+        <div id="colorValue" class="color-value"></div>
+        <button class="refresh-btn" onclick="location.reload()">Generate New Color</button>
+    </div>
+
+    <script>
+        // Function to generate random hex color
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Set random color when page loads
+        window.onload = function() {
+            const randomColor = getRandomColor();
+            const colorBox = document.getElementById('colorBox');
+            const colorValue = document.getElementById('colorValue');
+            
+            colorBox.style.backgroundColor = randomColor;
+            colorValue.textContent = `Color: ${randomColor}`;
+        };
+    </script>
+</body>
+</html>
